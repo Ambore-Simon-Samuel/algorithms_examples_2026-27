@@ -36,4 +36,40 @@ public class ArrayUtils {
         return max;
     }
 
+    /**
+     * Finds the lowest number in an integer array.
+     *
+     * @param nums the array of integers to search
+     * @return the lowest number in the array
+     */
+    public static int findMin(int[] nums) {
+        int min = nums[0];
+
+        for (int num : nums) {
+            if (num < min) {
+                min = num;
+            }
+        }
+
+        return min;
+    }
+
+    /**
+     * Counts how many times a value appears in an integer array.
+     *
+     * @param nums the array of integers to search
+     * @param value the value to count
+     * @return the number of times the value appears
+     */
+    public static int count(int[] nums, int value) {
+        int count = 0;
+
+        for (int num : nums) {
+            if (num == value) {
+                count++;
+            }
+        }
+
+        return count;
+    }
 }
