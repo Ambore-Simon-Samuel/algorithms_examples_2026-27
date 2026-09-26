@@ -24,5 +24,11 @@ public class ArrayManipulation {
 
         int numberOfSeventies = ArrayUtils.count(grades, 70);
         System.out.println("Number of subjects with grade 70: " + numberOfSeventies);
+
+        int mostFrequent = ArrayUtils.getMostFrequent(grades);
+        System.out.println("Most frequent grade: " + mostFrequent);
+
+        int aboveAverage = ArrayUtils.countGreaterThanAverage(grades);
+        System.out.println("Number of subjects above GPA: " + aboveAverage);
     }
 }

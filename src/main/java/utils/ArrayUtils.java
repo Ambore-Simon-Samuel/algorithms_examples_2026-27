@@ -72,4 +72,66 @@ public class ArrayUtils {
 
         return count;
     }
+
+    /**
+     * Finds the most frequent number in an integer array.
+     * If multiple numbers have the same frequency, the first one is returned.
+     * The array must not be empty.
+     *
+     * @param nums the array of integers to search
+     * @return the most frequent number in the array
+     */
+    public static int getMostFrequent(int[] nums) {
+        int mostFrequent = nums[0];
+        int highestFrequency = count(nums, nums[0]);
+
+        for (int num : nums) {
+            int frequency = count(nums, num);
+
+            if (frequency > highestFrequency) {
+                highestFrequency = frequency;
+                mostFrequent = num;
+            }
+        }
+
+        return mostFrequent;
+    }
+
+    /**
+     * Counts how many numbers in an integer array are greater than a given value.
+     *
+     * @param nums the array of integers to search
+     * @param value the value to compare against
+     * @return the number of elements greater than the value
+     */
+    public static int countGreater(int[] nums, int value) {
+        int count = 0;
+
+        for (int num : nums) {
+            if (num > value) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    /**
+     * Counts how many numbers in an integer array are greater than the average.
+     *
+     * @param nums the array of integers to search
+     * @return the number of elements greater than the average
+     */
+    public static int countGreaterThanAverage(int[] nums) {
+        double average = calcAverage(nums);
+        int count = 0;
+
+        for (int num : nums) {
+            if (num > average) {
+                count++;
+            }
+        }
+
+        return count;
+    }
 }
