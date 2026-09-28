@@ -3,6 +3,8 @@ package apps;
 import utils.ArrayUtils;
 import utils.InputUtility;
 
+import java.util.Scanner;
+
 public class ArrayManipulation {
 
     public static void main(String[] args) {
@@ -30,5 +32,23 @@ public class ArrayManipulation {
 
         int aboveAverage = ArrayUtils.countGreaterThanAverage(grades);
         System.out.println("Number of subjects above GPA: " + aboveAverage);
+
+        Scanner scanner = new Scanner(System.in);
+
+        String[] texts = new String[10];
+
+        for (int i = 0; i < texts.length; i++) {
+            System.out.print("Enter text " + (i + 1) + ": ");
+            texts[i] = scanner.nextLine();
+        }
+
+        String lastAlphabetically = ArrayUtils.findMax(texts);
+        System.out.println("Last alphabetically: " + lastAlphabetically);
+
+        String firstAlphabetically = ArrayUtils.findMin(texts);
+        System.out.println("First alphabetically: " + firstAlphabetically);
+
+        ArrayUtils.displayArray(grades);
+        ArrayUtils.displayArray(texts);
     }
 }

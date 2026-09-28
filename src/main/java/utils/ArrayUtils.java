@@ -3,6 +3,28 @@ package utils;
 public class ArrayUtils {
 
     /**
+     * Displays all elements and their positions in an integer array.
+     *
+     * @param nums the integer array to display
+     */
+    public static void displayArray(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            System.out.println("Position " + i + ": " + nums[i]);
+        }
+    }
+
+    /**
+     * Displays all elements and their positions in a String array.
+     *
+     * @param strings the String array to display
+     */
+    public static void displayArray(String[] strings) {
+        for (int i = 0; i < strings.length; i++) {
+            System.out.println("Position " + i + ": " + strings[i]);
+        }
+    }
+
+    /**
      * Calculates the average of the numbers in an integer array.
      *
      * @param nums the array of integers to calculate the average of
@@ -37,6 +59,24 @@ public class ArrayUtils {
     }
 
     /**
+     * Finds the String that appears last alphabetically.
+     *
+     * @param strings the String array to search
+     * @return the String that appears last alphabetically
+     */
+    public static String findMax(String[] strings) {
+        String max = strings[0];
+
+        for (String text : strings) {
+            if (text.compareToIgnoreCase(max) > 0) {
+                max = text;
+            }
+        }
+
+        return max;
+    }
+
+    /**
      * Finds the lowest number in an integer array.
      *
      * @param nums the array of integers to search
@@ -48,6 +88,24 @@ public class ArrayUtils {
         for (int num : nums) {
             if (num < min) {
                 min = num;
+            }
+        }
+
+        return min;
+    }
+
+    /**
+     * Finds the String that appears first alphabetically.
+     *
+     * @param strings the String array to search
+     * @return the String that appears first alphabetically
+     */
+    public static String findMin(String[] strings) {
+        String min = strings[0];
+
+        for (String text : strings) {
+            if (text.compareToIgnoreCase(min) < 0) {
+                min = text;
             }
         }
 
