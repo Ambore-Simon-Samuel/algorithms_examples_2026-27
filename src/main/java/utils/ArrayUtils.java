@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.Arrays;
+
 public class ArrayUtils {
 
     /**
@@ -133,8 +135,6 @@ public class ArrayUtils {
 
     /**
      * Finds the most frequent number in an integer array.
-     * If multiple numbers have the same frequency, the first one is returned.
-     * The array must not be empty.
      *
      * @param nums the array of integers to search
      * @return the most frequent number in the array
@@ -153,6 +153,47 @@ public class ArrayUtils {
         }
 
         return mostFrequent;
+    }
+
+    /**
+     * Finds the most frequent number by scanning runs of equal values.
+     *
+     * @param data the integer array to search
+     * @return the most frequent value in the array
+     */
+    public static int optimisedMaxFrequency(int[] data) {
+
+        int[] nums = Arrays.copyOf(data, data.length);
+        Arrays.sort(nums);
+
+        int mostFreq = nums[0];
+        int maxCount = 0;
+
+        int runStart = 0;
+        int runEnd = 0;
+
+        for (int i = 0; i < nums.length - 1; i++) {
+            runEnd++;
+
+            if (nums[runStart] != nums[runEnd]) {
+                int count = runEnd - runStart;
+
+                if (count > maxCount) {
+                    maxCount = count;
+                    mostFreq = nums[runStart];
+                }
+
+                runStart = runEnd;
+            }
+        }
+
+        int count = nums.length - runStart;
+
+        if (count > maxCount) {
+            mostFreq = nums[runStart];
+        }
+
+        return mostFreq;
     }
 
     /**
