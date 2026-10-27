@@ -113,3 +113,47 @@ The right pointer expands the window. when the sum rehces the target, the left p
 | 11 | 5 | 4 | 3 | Record [4,5],remove 4 | 2 | [4,5] |
 
 Final result: [4, 5].
+
+## Problem 4: Reverse Vowels
+
+Input: "hello"
+
+Expected ouput: "holle"
+
+### Brute-Force Method
+
+First,  the algorithm collects the vowel
+|Iteration | i | letters[i] | Is vowel? | vowels collected | count |
+|---|---|---|---|---|---|
+| 1 | 0 | h | No | [] | 0 |
+| 2 | 1 | e | Yes | [e] | 1 |
+| 3 | 2 | 1 | No | [e] | 1 |
+| 4 | 3 | 1 | No | [e] | 1 |
+| 5 | 4 | o | Yes | [e, o ] | 2|
+
+The algorithm then places the vowels back in reverse order.
+
+ Initial vowelIndex = 1.
+
+| Iteration | i | original character | Action | letters after iteration | vowelIndex |
+|---|---|---|---|---|---|
+| 1 | 0 | h | Not a vowel | hello | 1 |
+| 2 | 1 | e | Replace with o | hollo | 0 |
+| 3 | 2 | 1 | Not a vowel | hollo | 0 |
+| 4 | 3 | 1 | Not a vowel | hollo | 0 |
+| 5 | 4 | o | Replace with e | holle | -1 |
+
+Final result: "holle".
+
+###Two-pointer Method
+
+Initial left = 0, right = 4.
+
+| Iteration | left | right |letters[left] | letters[right] | Action | String after action |
+|---|---|---|---|---|---|---|
+| 1 | 0 | 4 | h | o | Skip h, move left to 1 | hello |
+| 2 | 1 | 4 | e | o | Swap vowels, move both pointers | holle |
+| 3 | 2 | 3 | 1 | 1 | 1 | Skip 1, move left to 3 | holle |
+
+The pointers meet at index 3, ending the loop. 
+ Final result: "holle".
