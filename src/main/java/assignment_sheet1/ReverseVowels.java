@@ -61,4 +61,56 @@ public class ReverseVowels {
                 letter == 'E' || letter == 'I' ||
                 letter == 'O' || letter == 'U';
     }
+
+    /**
+     * Reverse only the vowels in a string using two pointers.
+     * All other characters remian in their original positions.
+     * @param text the original string
+     * @return the string with vowels reversed
+     * @throws IllegalArgumentException if text is null
+     *
+     * Time complexity:
+     * Both pinters move towards the middle.
+     * T(n) <= n + n = 2n o(n).
+     *
+     * SPace complexity:
+     * The character array requires n positions.
+     * S(n) = n + c = 0(n).
+     *
+     * Limitation: only English vowels are recongnized.
+     * Creates a character array because java strings are immutable.
+     */
+    public static String twoPointerReverse(String text) {
+
+        if (text == null) {
+            throw new IllegalArgumentException("Text cannot be null");
+
+        }
+
+        char[] letters = text.toCharArray();
+
+        int left = 0;
+        int right = letters.length - 1;
+
+        while (left < right) {
+            if (!isVowel(letters[left])) {
+                left++;
+                continue;
+            }
+
+            if (!isVowel(letters[right])) {
+                right--;
+                continue;
+            }
+
+            char temp = letters[left];
+            letters[left] = letters[right];
+            letters[right] = temp;
+
+            left++;
+            right--;
+        }
+
+        return new String(letters);
+    }
 }
