@@ -63,4 +63,63 @@ public class ShortestSubarray {
 
         return new int[]{bestStart, bestEnd};
     }
+
+    /**
+     * Finds the shortest contiguous subarray with a sum
+     * greater than or equal to the target using a sliding window.
+     *
+     * @param numbers an array of positive integers
+     * @param target the minimum required sum
+     * @return start and end indices, or {0} if no solution exists
+     *
+     * Time complexity:
+     * Each element enters the window at most once and
+     * leaves the window at most once.
+     * T(n) <= n + n = 2n
+     * Therefore, O(n).
+     *
+     * Space complexity:
+     * Uses a fixed number of variables.
+     * S(n) = c = 0(1).
+     *
+     * Limitation: Requires positive array values.
+     * The sliding-window approach is not reliable for
+     * arbitrary array containing negative numbers.
+     */
+    public static int[] slidingwindowShortest(int[] numbers, int target) {
+
+        if (numbers == null || target <= 0) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+
+        int left = 0;
+        int sum = 0;
+        int shortest = numbers.length + 1;
+        int bestStart = -1;
+        int bestEnd = -1;
+
+        for (int right = 0; right < numbers.length; right++) {
+
+            sum += numbers[right];
+
+            while (sum >= target) {
+                int length = right - left + 1;
+
+                if (length < shortest) {
+                    shortest = length;
+                    bestStart = left;
+                    bestEnd = right;
+                }
+
+                sum -= numbers[left];
+                left++;
+            }
+        }
+
+        if (bestStart == -1) {
+            return new int[]{0};
+        }
+
+        return new int[]{bestStart, bestEnd};
+    }
 }
